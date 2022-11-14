@@ -1,0 +1,88 @@
+http://localhost:8080/h2-console
+
+###
+
+GET http://localhost:8080/api/dogs
+
+###
+
+GET http://localhost:8080/api/dogs/1
+
+###
+
+GET http://localhost:8080/api/dogs/2
+
+###
+
+GET http://localhost:8080/api/dogs/5
+
+###
+
+GET http://localhost:8080/api/dogs/213
+
+###
+
+DELETE http://localhost:8080/api/dogs/5
+
+###
+
+POST http://localhost:8080/api/dogs
+Content-Type: application/json
+
+{
+  "name": "Karmel",
+  "age": 1,
+  "height": 18.1,
+  "breed": "Corgi"
+}
+
+###
+
+PATCH http://localhost:8080/api/dogs/2
+Content-Type: application/json
+
+{
+  "name": "TESTOWANIE"
+}
+
+###
+
+GET http://localhost:8080/api/breeds
+
+###
+
+GET http://localhost:8080/api/breeds/1
+
+###
+
+GET http://localhost:8080/api/breeds/2
+
+###
+
+GET http://localhost:8080/api/breeds/3
+
+###
+
+DELETE http://localhost:8080/api/breeds/1
+
+###
+
+POST http://localhost:8080/api/breeds
+Content-Type: application/json
+
+{
+  "name": "TEST",
+  "pure": true
+}
+
+###
+
+PATCH http://localhost:8080/api/breeds/2
+Content-Type: application/json
+
+{
+  "name": "TESTOWANIE"
+}
+
+
+
