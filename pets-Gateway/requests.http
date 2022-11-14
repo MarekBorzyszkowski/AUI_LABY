@@ -22,7 +22,7 @@ GET http://localhost:8080/api/dogs/213
 
 ###
 
-DELETE http://localhost:8080/api/dogs/5
+DELETE http://localhost:8080/api/dogs/1
 
 ###
 

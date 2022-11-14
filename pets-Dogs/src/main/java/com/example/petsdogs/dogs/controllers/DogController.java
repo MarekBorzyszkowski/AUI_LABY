@@ -7,13 +7,13 @@ import com.example.petsdogs.dogs.dto.GetDogsResponse;
 import com.example.petsdogs.dogs.dto.UpdateDogRequest;
 import com.example.petsdogs.dogs.entity.Dog;
 import com.example.petsdogs.dogs.services.DogService;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -49,10 +49,10 @@ public class DogController {
     public ResponseEntity<Void> createDog(@RequestBody CreateDogRequest request, UriComponentsBuilder builder) throws JSONException {
         Dog dog = dogService.create(CreateDogRequest.dtoToEntityMapper(breed -> breedService.find(breed).orElseThrow())
                 .apply(request));
-        var restTemplate = new RestTemplate();
-        var headers = new HttpHeaders();
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        var personJsonObject = new JSONObject();
+        JSONObject personJsonObject = new JSONObject();
         personJsonObject.put("name",  dog.getName());
         personJsonObject.put("breed", request.getBreed());
         HttpEntity<String> newRequest = new HttpEntity<>(personJsonObject.toString(), headers);
@@ -66,7 +66,7 @@ public class DogController {
         Optional<Dog> dog = dogService.find(id);
         if(dog.isPresent()){
             dogService.delete(dog.get().getId());
-            var restTemplate = new RestTemplate();
+            RestTemplate restTemplate = new RestTemplate();
             restTemplate.delete(String.format("http://localhost:8081/api/dogs/%d", id));
             return ResponseEntity.accepted().build();
         }
@@ -81,13 +81,16 @@ public class DogController {
         if(dog.isPresent()) {
             UpdateDogRequest.dtoToEntityMapper().apply(dog.get(), request);
             dogService.update(dog.get());
-            var restTemplate = new RestTemplate();
-            var headers = new HttpHeaders();
+            RestTemplate restTemplate = new RestTemplate();
+            HttpClient httpClient = HttpClientBuilder.create().build();
+            restTemplate.setRequestFactory(new
+                    HttpComponentsClientHttpRequestFactory(httpClient));
+            HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            var personJsonObject = new JSONObject();
+            JSONObject personJsonObject = new JSONObject();
             personJsonObject.put("name",  request.getName());
             HttpEntity<String> newRequest = new HttpEntity<>(personJsonObject.toString(), headers);
-            restTemplate.patchForObject(String.format("http://localhost:8081/api/dogs/%d", id), newRequest, String.class);
+            restTemplate.exchange(String.format("http://localhost:8081/api/dogs/%d", id), HttpMethod.PATCH, newRequest, String.class);
             return ResponseEntity.accepted().build();
         }
         else {
