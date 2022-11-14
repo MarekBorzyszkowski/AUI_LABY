@@ -52,16 +52,13 @@ public class BreedController {
     public ResponseEntity<Void> createBreed(@RequestBody CreateBreedRequest request, UriComponentsBuilder builder) throws JSONException {
         Breed breed = breedService.create(CreateBreedRequest.dtoToEntityMapper()
                 .apply(request));
-
         var restTemplate = new RestTemplate();
         var headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         var personJsonObject = new JSONObject();
         personJsonObject.put("name",  request.getName());
         HttpEntity<String> newRequest = new HttpEntity<>(personJsonObject.toString(), headers);
-        restTemplate.postForLocation("http://localhost:8081/api/breeds", newRequest);
-
-        new RestTemplate().postForLocation("http://localhost:8082/api/breeds", breed.getName());
+        restTemplate.postForLocation("http://localhost:8082/api/breeds", newRequest);
         return ResponseEntity.created(builder.pathSegment("api", "breeds", "{id}")
                 .buildAndExpand(breed.getId()).toUri()).build();
     }
@@ -92,7 +89,7 @@ public class BreedController {
             var personJsonObject = new JSONObject();
             personJsonObject.put("name",  request.getName());
             HttpEntity<String> newRequest = new HttpEntity<>(personJsonObject.toString(), headers);
-            restTemplate.patchForObject(String.format("http://localhost:8081/api/breeds/%d", id), newRequest, String.class);
+            restTemplate.patchForObject(String.format("http://localhost:8082/api/breeds/%d", id), newRequest, String.class);
             return ResponseEntity.accepted().build();
         }
         else {
