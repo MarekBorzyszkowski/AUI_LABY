@@ -84,5 +84,22 @@ Content-Type: application/json
   "name": "TESTOWANIE"
 }
 
+###
+
+GET http://localhost:8080/api/breeds/1/dogs
+
+###
+
+GET http://localhost:8080/api/breeds/2/dogs
+
+###
+
+GET http://localhost:8080/api/breeds/1/dogs/1
+
+###
+
+GET http://localhost:8080/api/breeds/2/dogs/2
+
+###
 
 

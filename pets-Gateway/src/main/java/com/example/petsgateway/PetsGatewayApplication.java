@@ -24,11 +24,11 @@ public class PetsGatewayApplication {
         return builder.routes()
                 .route("breeds", b -> b.host("localhost:8080")
                         .and()
-                        .path("/api/breeds", "/api/breeds/**")
+                        .path("/api/breeds", "/api/breeds/{id}")
                         .uri("http://localhost:8081"))
                 .route("dogs", b -> b.host("localhost:8080")
                         .and()
-                        .path("/api/dogs", "/api/dogs/**")
+                        .path("/api/dogs", "/api/dogs/**", "/api/breeds/{id}/dogs", "/api/breeds/{id}/dogs/{dId}")
                         .uri("http://localhost:8082"))
                 .build();
     }
