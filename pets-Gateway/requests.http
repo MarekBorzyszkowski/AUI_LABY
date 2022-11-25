@@ -102,4 +102,64 @@ GET http://localhost:8080/api/breeds/2/dogs/2
 
 ###
 
+GET http://localhost:8080/api/breeds/1/dogs/2
+
+###
+
+POST http://localhost:8080/api/breeds/1/dogs
+Content-Type: application/json
+
+{
+  "name": "TEST",
+  "age": 1,
+  "height": 18.1,
+  "breed": "Corgi"
+}
+
+###
+
+POST http://localhost:8080/api/breeds/1/dogs
+Content-Type: application/json
+
+{
+  "name": "TEST",
+  "age": 1,
+  "height": 18.1,
+  "breed": "ausbduabsdbaidbabwd"
+}
+
+###
+
+POST http://localhost:8080/api/breeds/1/dogs
+Content-Type: application/json
+
+{
+  "name": "TEST",
+  "age": 1,
+  "height": 18.1,
+}
+
+###
+
+PATCH http://localhost:8080/api/breeds/1/dogs/1
+Content-Type: application/json
+
+{
+  "name": "TESTOWANIE"
+}
+
+###
+
+DELETE http://localhost:8080/api/breeds/1/dogs/2
+
+###
+
+DELETE http://localhost:8080/api/breeds/1/dogs/1
+
+###
+
+GET http://localhost:8080/api/breeds/1/dogs/2
+
+###
+
 
