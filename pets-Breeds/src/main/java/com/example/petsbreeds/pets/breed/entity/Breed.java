@@ -1,12 +1,10 @@
 package com.example.petsbreeds.pets.breed.entity;
 
-import com.example.petsbreeds.pets.dogs.entity.Dog;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -23,9 +21,4 @@ public class Breed implements Serializable {
     private Long id;
     private String name;
     private boolean pure;
-
-    @OneToMany(mappedBy = "breed", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private Set<Dog> dogSet;
 }

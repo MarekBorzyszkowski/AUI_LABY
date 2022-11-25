@@ -1,5 +1,6 @@
 package com.example.petsdogs.dogs.services;
 
+import com.example.petsdogs.breed.entity.Breed;
 import com.example.petsdogs.dogs.entity.Dog;
 import com.example.petsdogs.dogs.repositories.DogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import java.util.Optional;
 
 @Service
 public class DogService {
-
 
     private DogRepository repository;
 
@@ -27,6 +27,10 @@ public class DogService {
 
     public List<Dog> findAll(){
         return this.repository.findAll();
+    }
+
+    public List<Dog> findAllByBreed(Breed breed){
+        return this.repository.findAllByBreed(breed);
     }
 
     @Transactional

@@ -6,7 +6,6 @@ import com.example.petsbreeds.pets.breed.dto.GetBreedsResponse;
 import com.example.petsbreeds.pets.breed.dto.UpdateBreedRequest;
 import com.example.petsbreeds.pets.breed.entity.Breed;
 import com.example.petsbreeds.pets.breed.service.BreedService;
-import com.example.petsbreeds.pets.dogs.services.DogService;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONException;
@@ -25,12 +24,10 @@ import java.util.Optional;
 @RequestMapping("api/breeds")
 public class BreedController {
 
-    private DogService dogService;
     private BreedService breedService;
 
     @Autowired
-    public BreedController(DogService dogService, BreedService breedService){
-        this.dogService = dogService;
+    public BreedController(BreedService breedService){
         this.breedService = breedService;
     }
 
