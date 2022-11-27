@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Pets web application"/>
+    <meta name="keywords" content="DOGS"/>
+    <meta name="author" content="Marek Borzyszkowski"/>
+    <title>Pets</title>
+    <link rel="stylesheet" href="../styles.css"/>
+    <script src="../script.js"  defer="defer"></script>
+    <script type="module" src="dog.js" defer="defer"></script>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1>Pets</h1>
+    </header>
+
+    <nav class="navigation-bar">
+        <ul>
+            <li><a href="../index.html">main</a></li>
+            <li><a href="../breed_list/breed_list.html">breeds</a></li>
+        </ul>
+    </nav>
+
+    <section class="main-section">
+        <article class="text--justified">
+            <header><h2 id="dog-name">dog-name</h2></header>
+            <section>
+                <h3>Details</h3>
+                <div class="details-grid">
+                    <label for="age">Age:</label><span id="age">age</span><br/>
+                    <label for="height">Height:</label><span id="height">height</span><br/>
+                    <label for="breed">Breed:</label><span id="breed">breed</span>
+                </div>
+            </section>
+        </article>
+    </section>
+
+    <footer class="footer">
+        <p>Copyright &copy; 2022, Marek Borzyszkowski</p>
+    </footer>
+</div>
+</body>
+</html>
