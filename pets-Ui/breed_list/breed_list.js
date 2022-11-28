@@ -3,6 +3,7 @@ import {getBackendUrl} from '../js/configuration.js';
 
 window.addEventListener('load', () => {
     fetchAndDisplayBreeds();
+    document.getElementById('article').appendChild(createLinkCell('add breed','../breed_add/breed_add.html'));
 });
 
 /**

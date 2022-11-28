@@ -17,7 +17,7 @@ function fetchAndDisplayDog() {
             displayBreed(JSON.parse(this.responseText))
         }
     };
-    xhttp.open("DELETE", getBackendUrl() + '/api/breeds/' + getParameterByName('breed')
+    xhttp.open("GET", getBackendUrl() + '/api/breeds/' + getParameterByName('breed')
         + '/dogs/' + getParameterByName('dog'), true);
     xhttp.send();
 }
