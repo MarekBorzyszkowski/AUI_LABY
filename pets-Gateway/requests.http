@@ -102,7 +102,7 @@ GET http://localhost:8080/api/breeds/2/dogs/2
 
 ###
 
-GET http://localhost:8080/api/breeds/1/dogs/2
+GET http://localhost:8080/api/breeds/1/dogs/6
 
 ###
 
@@ -136,7 +136,7 @@ Content-Type: application/json
 {
   "name": "TEST",
   "age": 1,
-  "height": 18.1,
+  "height": "18.1"
 }
 
 ###

@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Pets web application"/>
+    <meta name="keywords" content="DOGS"/>
+    <meta name="author" content="Marek Borzyszkowski"/>
+    <title>Pets</title>
+    <link rel="stylesheet" href="../styles.css"/>
+    <script src="../script.js"  defer="defer"></script>
+    <script type="module" src="dog_add.js" defer="defer"></script>
 </head>
 <body>
+<div class="container">
+    <header class="header">
+        <h1>Pets</h1>
+    </header>
 
+    <nav class="navigation-bar">
+        <ul>
+            <li><a href="../index.html">main</a></li>
+            <li><a href="../breed_list/breed_list.html">breeds</a></li>
+        </ul>
+    </nav>
+
+    <section class="main-section">
+        <article class="text--justified">
+            <header><h2>Add dog</h2></header>
+            <section>
+                <div class="details-grid">
+                    <form id="myForm">
+                        <label for="name">Name:</label><br>
+                        <input type="text" id="name" name="name"><br>
+                        <label for="ageId">Age</label><br/>
+                        <input type="number" id="ageId" name="age"><br/>
+                        <label for="heightId">Height</label><br/>
+                        <input type="number" step="0.01" id="heightId" name="height"><br/>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </section>
+        </article>
+    </section>
+
+    <footer class="footer">
+        <p>Copyright &copy; 2022, Marek Borzyszkowski</p>
+    </footer>
+</div>
 </body>
 </html>

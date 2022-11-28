@@ -43,6 +43,7 @@ function createTableRow(breed) {
     let tr = document.createElement('tr');
     tr.appendChild(createTextCell(breed.name));
     tr.appendChild(createLinkCell('view', '../breed/breed.html?breed=' + breed.id));
+    tr.appendChild(createLinkCell('edit', '../breed_edit/breed_edit.html?breed=' + breed.id));
     tr.appendChild(createButtonCell('delete', () => deleteUser(breed.id)));
     return tr;
 }

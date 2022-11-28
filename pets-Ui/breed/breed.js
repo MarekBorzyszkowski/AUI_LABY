@@ -11,6 +11,7 @@ import {getBackendUrl} from '../js/configuration.js';
 window.addEventListener('load', () => {
     fetchAndDisplayBreed();
     fetchAndDisplayDogs();
+    document.getElementById('article').appendChild(createLinkCell('add dog','../dog_add/dog_add.html?breed=' + getParameterByName('breed')));
 });
 
 /**
