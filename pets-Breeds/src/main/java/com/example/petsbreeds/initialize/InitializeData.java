@@ -19,7 +19,6 @@ public class InitializeData {
 
     @PostConstruct
     private synchronized void init(){
-
         Breed corgi = Breed.builder().name("Corgi").pure(true).build();
         Breed germanSheppard = Breed.builder().name("German Sheppard").pure(true).build();
 

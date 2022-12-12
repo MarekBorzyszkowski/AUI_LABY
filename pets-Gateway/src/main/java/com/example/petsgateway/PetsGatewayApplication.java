@@ -28,7 +28,7 @@ public class PetsGatewayApplication {
                         .uri("http://localhost:8081"))
                 .route("dogs", b -> b.host("localhost:8080")
                         .and()
-                        .path("/api/dogs", "/api/dogs/**", "/api/breeds/{id}/dogs", "/api/breeds/{id}/dogs/{dId}")
+                        .path("/api/dogs", "/api/dogs/{id}", "/api/breeds/{id}/dogs", "/api/breeds/{id}/dogs/{dId}")
                         .uri("http://localhost:8082"))
                 .build();
     }

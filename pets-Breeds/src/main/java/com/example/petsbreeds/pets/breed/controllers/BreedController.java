@@ -81,8 +81,7 @@ public class BreedController {
             breedService.update(breed.get());
             RestTemplate restTemplate = new RestTemplate();
             HttpClient httpClient = HttpClientBuilder.create().build();
-            restTemplate.setRequestFactory(new
-                    HttpComponentsClientHttpRequestFactory(httpClient));
+            restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpClient));
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             JSONObject personJsonObject = new JSONObject();
