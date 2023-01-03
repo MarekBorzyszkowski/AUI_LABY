@@ -22,14 +22,14 @@ public class PetsGatewayApplication {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("breeds", b -> b.host("localhost:8080")
+                .route("breeds", b -> b.host("172.28.0.4:8080")
                         .and()
                         .path("/api/breeds", "/api/breeds/{id}")
-                        .uri("http://localhost:8081"))
-                .route("dogs", b -> b.host("localhost:8080")
+                        .uri("http://172.28.0.6:8081"))
+                .route("dogs", b -> b.host("172.28.0.4:8080")
                         .and()
                         .path("/api/dogs", "/api/dogs/{id}", "/api/breeds/{id}/dogs", "/api/breeds/{id}/dogs/{dId}")
-                        .uri("http://localhost:8082"))
+                        .uri("http://172.28.0.5:8082"))
                 .build();
     }
 

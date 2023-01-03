@@ -1,0 +1,53 @@
+version: '3.7'
+services:
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: DockerFile
+    ports:
+      - 8080:80
+    networks:
+      qnet:
+        ipv4_address: 172.28.0.2
+  pets-ui:
+    build:
+      context: ./pets-Ui
+      dockerfile: DockerFile
+    ports:
+      - 8000
+    networks:
+      qnet:
+        ipv4_address: 172.28.0.3
+  pets-gateway:
+    build:
+      context: ./pets-Gateway
+      dockerfile: DockerFile
+    ports:
+      - 8080
+    networks:
+      qnet:
+        ipv4_address: 172.28.0.4
+  pets-dogs:
+    build:
+      context: ./pets-Dogs
+      dockerfile: DockerFile
+    ports:
+      - 8082
+    networks:
+      qnet:
+        ipv4_address: 172.28.0.5
+  pets-breeds:
+    build:
+      context: ./pets-Breeds
+      dockerfile: DockerFile
+    ports:
+      - 8081
+    networks:
+      qnet:
+        ipv4_address: 172.28.0.6
+networks:
+  qnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

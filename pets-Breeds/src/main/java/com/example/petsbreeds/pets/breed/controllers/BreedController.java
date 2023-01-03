@@ -55,7 +55,7 @@ public class BreedController {
         var personJsonObject = new JSONObject();
         personJsonObject.put("name",  request.getName());
         HttpEntity<String> newRequest = new HttpEntity<>(personJsonObject.toString(), headers);
-        restTemplate.postForLocation("http://localhost:8082/api/breeds", newRequest);
+        restTemplate.postForLocation("http://172.28.0.4:8082/api/breeds", newRequest);
         return ResponseEntity.created(builder.pathSegment("api", "breeds", "{id}")
                 .buildAndExpand(breed.getId()).toUri()).build();
     }
@@ -65,7 +65,7 @@ public class BreedController {
         Optional<Breed> breed = breedService.find(id);
         if(breed.isPresent()){
             breedService.delete(breed.get().getId());
-            new RestTemplate().delete(String.format("http://localhost:8082/api/breeds/%d", id));
+            new RestTemplate().delete(String.format("http://172.28.0.4:8082/api/breeds/%d", id));
             return ResponseEntity.accepted().build();
         }
         else {
@@ -87,7 +87,7 @@ public class BreedController {
             JSONObject personJsonObject = new JSONObject();
             personJsonObject.put("name",  request.getName());
             HttpEntity<String> newRequest = new HttpEntity<>(personJsonObject.toString(), headers);
-            restTemplate.exchange(String.format("http://localhost:8082/api/breeds/%d", id), HttpMethod.PATCH, newRequest, String.class);
+            restTemplate.exchange(String.format("http://172.28.0.4:8082/api/breeds/%d", id), HttpMethod.PATCH, newRequest, String.class);
 
             return ResponseEntity.accepted().build();
         }
